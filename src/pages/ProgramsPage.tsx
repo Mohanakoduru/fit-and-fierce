@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Link, useLocation } from 'react-router-dom';
@@ -18,11 +17,11 @@ const programDetails = {
       'Flexible scheduling to fit your lifestyle'
     ],
     sessions: '30, 45, or 60 minutes',
-    pricing: 'Starting at $50 per session',
+    pricing: 'Starting at ₹3,599 per session',
     packages: [
-      { name: 'Starter Package', sessions: 4, price: '$220', savings: 'Save $20' },
-      { name: 'Commitment Package', sessions: 12, price: '$600', savings: 'Save $120' },
-      { name: 'Transformation Package', sessions: 24, price: '$1080', savings: 'Save $360' }
+      { name: 'Starter Package', sessions: 4, price: '₹15,999', savings: 'Save ₹1,500' },
+      { name: 'Commitment Package', sessions: 12, price: '₹44,999', savings: 'Save ₹8,999' },
+      { name: 'Transformation Package', sessions: 24, price: '₹79,999', savings: 'Save ₹26,999' }
     ]
   },
   'group-classes': {
@@ -37,7 +36,7 @@ const programDetails = {
       'Regular class updates to prevent plateaus'
     ],
     classSize: '5-15 people',
-    pricing: '$99/month (unlimited)',
+    pricing: '₹7,499/month (unlimited)',
     classTypes: [
       { name: 'HIIT', description: 'High-intensity interval training for maximum calorie burn', duration: '45 min' },
       { name: 'Spinning', description: 'Indoor cycling workouts with varying intensity', duration: '50 min' },
@@ -58,7 +57,7 @@ const programDetails = {
       'Strategies for dining out and special occasions'
     ],
     consultation: '60 minutes',
-    pricing: '8-Week Program: $299',
+    pricing: '8-Week Program: ₹21,999',
     includes: [
       'Initial 60-minute consultation',
       'Personalized nutrition plan',
@@ -80,7 +79,7 @@ const programDetails = {
       'Continued calorie burn post-workout'
     ],
     sessions: '3-5 times per week',
-    pricing: 'Included in membership or $15 per class',
+    pricing: 'Included in membership or ₹1,099 per class',
     benefits: [
       'Improved cardiovascular health',
       'Increased metabolic rate',
@@ -101,7 +100,7 @@ const programDetails = {
       'Balanced approach targeting all major muscle groups'
     ],
     sessions: '3-4 times per week',
-    pricing: 'Included in membership or $65 per session with a specialist',
+    pricing: 'Included in membership or ₹4,799 per session with a specialist',
     levels: [
       { name: 'Beginner', focus: 'Learning proper form and building foundational strength' },
       { name: 'Intermediate', focus: 'Progressive overload and more advanced movement patterns' },
@@ -120,7 +119,7 @@ const programDetails = {
       'Complement to other training modalities'
     ],
     sessions: '60-90 minutes',
-    pricing: 'Included in membership or $18 per class',
+    pricing: 'Included in membership or ₹1,299 per class',
     styles: [
       { name: 'Vinyasa Flow', level: 'All levels', focus: 'Flowing movements synchronized with breath' },
       { name: 'Power Yoga', level: 'Intermediate-Advanced', focus: 'Strength-building dynamic practice' },
@@ -398,7 +397,7 @@ const ProgramsPage = () => {
                 </div>
                 <div className="flex justify-between text-sm">
                   <span className="font-medium">Starting at:</span>
-                  <span className="text-fitgreen font-bold">$50 per session</span>
+                  <span className="text-fitgreen font-bold">₹3,599 per session</span>
                 </div>
               </div>
               <Link to="/programs?program=personal-training">
@@ -428,7 +427,7 @@ const ProgramsPage = () => {
                 </div>
                 <div className="flex justify-between text-sm">
                   <span className="font-medium">Monthly Pass:</span>
-                  <span className="text-fitgreen font-bold">$99/month (unlimited)</span>
+                  <span className="text-fitgreen font-bold">₹7,499/month (unlimited)</span>
                 </div>
               </div>
               <Link to="/programs?program=group-classes">
@@ -458,7 +457,7 @@ const ProgramsPage = () => {
                 </div>
                 <div className="flex justify-between text-sm">
                   <span className="font-medium">8-Week Program:</span>
-                  <span className="text-fitgreen font-bold">$299</span>
+                  <span className="text-fitgreen font-bold">₹21,999</span>
                 </div>
               </div>
               <Link to="/programs?program=nutrition-coaching">

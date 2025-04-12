@@ -14,7 +14,7 @@ const JoinPage = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="border rounded-lg p-6 hover:shadow-md transition-shadow">
               <h3 className="text-lg font-bold mb-2">Basic</h3>
-              <p className="text-2xl font-bold text-fitgreen mb-4">$49<span className="text-sm text-gray-500">/month</span></p>
+              <p className="text-2xl font-bold text-fitgreen mb-4">₹3,499<span className="text-sm text-gray-500">/month</span></p>
               <ul className="space-y-2 mb-6">
                 <li className="flex items-start">
                   <span className="text-fitgreen mr-2">✓</span>
@@ -37,7 +37,7 @@ const JoinPage = () => {
                 POPULAR
               </div>
               <h3 className="text-lg font-bold mb-2">Premium</h3>
-              <p className="text-2xl font-bold text-fitgreen mb-4">$79<span className="text-sm text-gray-500">/month</span></p>
+              <p className="text-2xl font-bold text-fitgreen mb-4">₹5,999<span className="text-sm text-gray-500">/month</span></p>
               <ul className="space-y-2 mb-6">
                 <li className="flex items-start">
                   <span className="text-fitgreen mr-2">✓</span>
@@ -61,7 +61,7 @@ const JoinPage = () => {
             
             <div className="border rounded-lg p-6 hover:shadow-md transition-shadow">
               <h3 className="text-lg font-bold mb-2">Elite</h3>
-              <p className="text-2xl font-bold text-fitgreen mb-4">$119<span className="text-sm text-gray-500">/month</span></p>
+              <p className="text-2xl font-bold text-fitgreen mb-4">₹8,999<span className="text-sm text-gray-500">/month</span></p>
               <ul className="space-y-2 mb-6">
                 <li className="flex items-start">
                   <span className="text-fitgreen mr-2">✓</span>
