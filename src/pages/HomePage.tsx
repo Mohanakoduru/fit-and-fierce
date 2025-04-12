@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { 
@@ -235,7 +234,7 @@ const HomePage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
               <img 
-                src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
+                src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3" 
                 alt="Personal Training" 
                 className="w-full h-56 object-cover"
               />
@@ -245,7 +244,7 @@ const HomePage = () => {
                   One-on-one sessions with our expert trainers tailored to your specific goals, fitness level, and preferences.
                 </p>
                 <Link 
-                  to="/programs" 
+                  to="/programs?program=personal-training" 
                   className="flex items-center text-fitgreen font-semibold hover:text-fitblue transition-colors"
                 >
                   Learn More <ArrowRight size={16} className="ml-1" />
@@ -255,7 +254,7 @@ const HomePage = () => {
 
             <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
               <img 
-                src="https://images.unsplash.com/photo-1518310383802-640c2de311b6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
+                src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?ixlib=rb-4.0.3" 
                 alt="Group Classes" 
                 className="w-full h-56 object-cover"
               />
@@ -265,7 +264,7 @@ const HomePage = () => {
                   Energetic, instructor-led sessions including HIIT, spinning, body pump, and more in a motivating group setting.
                 </p>
                 <Link 
-                  to="/programs" 
+                  to="/programs?program=group-classes" 
                   className="flex items-center text-fitgreen font-semibold hover:text-fitblue transition-colors"
                 >
                   Learn More <ArrowRight size={16} className="ml-1" />
@@ -275,7 +274,7 @@ const HomePage = () => {
 
             <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
               <img 
-                src="https://images.unsplash.com/photo-1616279969856-759f2a53b03a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
+                src="https://images.unsplash.com/photo-1547592180-85f173990554?ixlib=rb-4.0.3" 
                 alt="Nutrition Coaching" 
                 className="w-full h-56 object-cover"
               />
@@ -285,7 +284,7 @@ const HomePage = () => {
                   Personalized nutrition plans and ongoing support to optimize your diet for better health and fitness results.
                 </p>
                 <Link 
-                  to="/programs" 
+                  to="/programs?program=nutrition-coaching" 
                   className="flex items-center text-fitgreen font-semibold hover:text-fitblue transition-colors"
                 >
                   Learn More <ArrowRight size={16} className="ml-1" />

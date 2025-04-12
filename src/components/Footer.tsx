@@ -22,7 +22,7 @@ const Footer = () => {
               <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-fitgreen transition-colors" aria-label="Facebook">
                 <Facebook size={20} />
               </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-fitgreen transition-colors" aria-label="Instagram">
+              <a href="https://www.instagram.com/mohan.koduru" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-fitgreen transition-colors" aria-label="Instagram">
                 <Instagram size={20} />
               </a>
               <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-fitgreen transition-colors" aria-label="Twitter">
@@ -64,22 +64,22 @@ const Footer = () => {
             <h4 className="text-lg font-bold mb-4">Our Programs</h4>
             <ul className="space-y-2">
               <li>
-                <Link to="/programs" className="text-gray-300 hover:text-fitgreen transition-colors">Personal Training</Link>
+                <Link to="/programs?program=personal-training" className="text-gray-300 hover:text-fitgreen transition-colors">Personal Training</Link>
               </li>
               <li>
-                <Link to="/programs" className="text-gray-300 hover:text-fitgreen transition-colors">Group Classes</Link>
+                <Link to="/programs?program=group-classes" className="text-gray-300 hover:text-fitgreen transition-colors">Group Classes</Link>
               </li>
               <li>
-                <Link to="/programs" className="text-gray-300 hover:text-fitgreen transition-colors">HIIT Workouts</Link>
+                <Link to="/programs?program=hiit" className="text-gray-300 hover:text-fitgreen transition-colors">HIIT Workouts</Link>
               </li>
               <li>
-                <Link to="/programs" className="text-gray-300 hover:text-fitgreen transition-colors">Strength Training</Link>
+                <Link to="/programs?program=strength" className="text-gray-300 hover:text-fitgreen transition-colors">Strength Training</Link>
               </li>
               <li>
-                <Link to="/programs" className="text-gray-300 hover:text-fitgreen transition-colors">Yoga & Wellness</Link>
+                <Link to="/programs?program=yoga" className="text-gray-300 hover:text-fitgreen transition-colors">Yoga & Wellness</Link>
               </li>
               <li>
-                <Link to="/programs" className="text-gray-300 hover:text-fitgreen transition-colors">Nutrition Planning</Link>
+                <Link to="/programs?program=nutrition" className="text-gray-300 hover:text-fitgreen transition-colors">Nutrition Planning</Link>
               </li>
             </ul>
           </div>
@@ -90,15 +90,15 @@ const Footer = () => {
             <ul className="space-y-4">
               <li className="flex items-start space-x-3">
                 <MapPin size={20} className="text-fitgreen shrink-0 mt-1" />
-                <span className="text-gray-300">123 Fitness Avenue, Workout City, WC 12345</span>
+                <span className="text-gray-300">PJXP+4CH, L.B.Reddy Nagar, Krishna District, Mylavaram, Andhra Pradesh 521230.</span>
               </li>
               <li className="flex items-center space-x-3">
                 <Phone size={20} className="text-fitgreen shrink-0" />
-                <span className="text-gray-300">(123) 456-7890</span>
+                <span className="text-gray-300">8639033832</span>
               </li>
               <li className="flex items-center space-x-3">
                 <Mail size={20} className="text-fitgreen shrink-0" />
-                <span className="text-gray-300">info@fitandfierce.com</span>
+                <span className="text-gray-300">mohankoduru064@gmail.com</span>
               </li>
             </ul>
           </div>
