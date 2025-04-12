@@ -15,6 +15,7 @@ import JoinPage from "./pages/JoinPage";
 import FreeTrial from "./pages/FreeTrial";
 import ProgramsPage from "./pages/ProgramsPage";
 import TestimonialsPage from "./pages/TestimonialsPage";
+import TrainersPage from "./pages/TrainersPage";
 
 // Create a client
 const queryClient = new QueryClient();
@@ -37,6 +38,7 @@ const App = () => {
                 <Route path="/free-trial" element={<FreeTrial />} />
                 <Route path="/programs" element={<ProgramsPage />} />
                 <Route path="/testimonials" element={<TestimonialsPage />} />
+                <Route path="/trainers" element={<TrainersPage />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>

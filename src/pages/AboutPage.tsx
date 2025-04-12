@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { 
   Award, 
@@ -41,7 +40,7 @@ const AboutPage = () => {
       id: 1,
       name: "Alex Rodriguez",
       role: "Head Trainer & Founder",
-      image: "https://images.unsplash.com/photo-1617922001439-4a2e6562f328?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+      image: "https://images.unsplash.com/photo-1594381898411-846e7d193883?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
       bio: "With over 15 years of experience and multiple certifications, Alex specializes in strength training and athletic performance.",
       certifications: ["NASM Certified Personal Trainer", "CrossFit Level 3 Trainer", "Precision Nutrition Level 2"]
     },
@@ -57,7 +56,7 @@ const AboutPage = () => {
       id: 3,
       name: "Marcus Chen",
       role: "Strength & Conditioning Coach",
-      image: "https://images.unsplash.com/photo-1594381898411-846e7d193883?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+      image: "https://images.unsplash.com/photo-1617922001439-4a2e6562f328?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
       bio: "Marcus specializes in helping clients build strength, power, and functional fitness through scientifically-backed training methods.",
       certifications: ["NSCA Certified Strength & Conditioning Specialist", "USA Weightlifting Level 2", "TRX Suspension Training"]
     },
@@ -198,14 +197,6 @@ const AboutPage = () => {
                 </div>
               </div>
             ))}
-          </div>
-
-          <div className="text-center mt-12">
-            <Link to="/trainers">
-              <Button className="btn-primary">
-                View All Trainers
-              </Button>
-            </Link>
           </div>
         </div>
       </section>
