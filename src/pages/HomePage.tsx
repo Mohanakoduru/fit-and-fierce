@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   Dumbbell, 
@@ -11,8 +11,11 @@ import {
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import BlogCard from '@/components/BlogCard';
+import VideoPlayer from '@/components/VideoPlayer';
 
 const HomePage = () => {
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
+
   // Mock data for featured blog posts
   const featuredPosts = [
     {
@@ -44,6 +47,12 @@ const HomePage = () => {
     },
   ];
 
+  // Video information
+  const videoInfo = {
+    src: "https://cdn.jsdelivr.net/npm/big-buck-bunny-1080p@0.0.6/video.mp4",
+    thumbnail: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+  };
+
   return (
     <>
       {/* Hero Section */}
@@ -59,12 +68,16 @@ const HomePage = () => {
                 Join FIT & FIERCE, where we empower you to push your limits, achieve your fitness goals, and become the strongest version of yourself.
               </p>
               <div className="flex flex-wrap gap-4">
-                <Button className="btn-primary">
-                  Join Us Today
-                </Button>
-                <Button variant="outline" className="bg-transparent border-white text-white hover:bg-white hover:text-fitdark">
-                  Explore Programs
-                </Button>
+                <Link to="/join">
+                  <Button className="btn-primary">
+                    Join Us Today
+                  </Button>
+                </Link>
+                <Link to="/programs">
+                  <Button variant="outline" className="bg-transparent border-white text-white hover:bg-white hover:text-fitdark">
+                    Explore Programs
+                  </Button>
+                </Link>
               </div>
               <div className="flex items-center mt-12 space-x-8">
                 <div className="text-center">
@@ -175,24 +188,38 @@ const HomePage = () => {
                   <span>Vibrant group classes for all fitness levels</span>
                 </li>
               </ul>
-              <Button className="btn-primary">
-                Book a Free Trial
-              </Button>
+              <Link to="/free-trial">
+                <Button className="btn-primary">
+                  Book a Free Trial
+                </Button>
+              </Link>
             </div>
             <div className="relative rounded-lg overflow-hidden shadow-xl">
               <img 
-                src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
+                src={videoInfo.thumbnail}
                 alt="Gym interior" 
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 flex items-center justify-center">
-                <button className="w-20 h-20 bg-fitgreen rounded-full flex items-center justify-center hover:bg-fitblue transition-colors">
+                <button 
+                  className="w-20 h-20 bg-fitgreen rounded-full flex items-center justify-center hover:bg-fitblue transition-colors"
+                  onClick={() => setIsVideoOpen(true)}
+                  aria-label="Play video"
+                >
                   <Play className="text-white ml-1" size={30} />
                 </button>
               </div>
             </div>
           </div>
         </div>
+
+        {/* Video Player Modal */}
+        <VideoPlayer
+          videoSrc={videoInfo.src}
+          thumbnailSrc={videoInfo.thumbnail}
+          isOpen={isVideoOpen}
+          onClose={() => setIsVideoOpen(false)}
+        />
       </section>
 
       {/* Programs Preview */}
@@ -268,9 +295,11 @@ const HomePage = () => {
           </div>
 
           <div className="text-center mt-12">
-            <Button className="btn-primary">
-              View All Programs
-            </Button>
+            <Link to="/programs">
+              <Button className="btn-primary">
+                View All Programs
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
@@ -376,12 +405,16 @@ const HomePage = () => {
             Join FIT & FIERCE today and take the first step toward a stronger, healthier, more confident you. Your fitness journey starts here.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Button className="bg-white text-fitblue hover:bg-gray-100">
-              Join Now
-            </Button>
-            <Button variant="outline" className="bg-transparent border-white text-white hover:bg-white hover:text-fitblue">
-              Book a Free Trial
-            </Button>
+            <Link to="/join">
+              <Button className="bg-white text-fitblue hover:bg-gray-100">
+                Join Now
+              </Button>
+            </Link>
+            <Link to="/free-trial">
+              <Button variant="outline" className="bg-transparent border-white text-white hover:bg-white hover:text-fitblue">
+                Book a Free Trial
+              </Button>
+            </Link>
           </div>
         </div>
       </section>

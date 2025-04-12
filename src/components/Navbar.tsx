@@ -33,6 +33,7 @@ const Navbar = () => {
     { name: 'Trainers', path: '/trainers' },
     { name: 'Programs', path: '/programs' },
     { name: 'Contact', path: '/contact' },
+    { name: 'Testimonials', path: '/testimonials' },
   ];
 
   const isActive = (path: string) => location.pathname === path;
@@ -70,7 +71,9 @@ const Navbar = () => {
         </nav>
 
         <div className="hidden md:block">
-          <Button className="btn-primary">Join Today</Button>
+          <Link to="/join">
+            <Button className="btn-primary">Join Today</Button>
+          </Link>
         </div>
 
         {/* Mobile Menu Button */}
@@ -101,7 +104,9 @@ const Navbar = () => {
                 {link.name}
               </Link>
             ))}
-            <Button className="btn-primary w-full mt-4">Join Today</Button>
+            <Link to="/join" onClick={() => setIsMenuOpen(false)}>
+              <Button className="btn-primary w-full mt-4">Join Today</Button>
+            </Link>
           </div>
         </div>
       )}

@@ -11,6 +11,10 @@ import AboutPage from "./pages/AboutPage";
 import BlogPage from "./pages/BlogPage";
 import ContactPage from "./pages/ContactPage";
 import NotFound from "./pages/NotFound";
+import JoinPage from "./pages/JoinPage";
+import FreeTrial from "./pages/FreeTrial";
+import ProgramsPage from "./pages/ProgramsPage";
+import TestimonialsPage from "./pages/TestimonialsPage";
 
 // Create a client
 const queryClient = new QueryClient();
@@ -29,6 +33,10 @@ const App = () => {
                 <Route path="/about" element={<AboutPage />} />
                 <Route path="/blog" element={<BlogPage />} />
                 <Route path="/contact" element={<ContactPage />} />
+                <Route path="/join" element={<JoinPage />} />
+                <Route path="/free-trial" element={<FreeTrial />} />
+                <Route path="/programs" element={<ProgramsPage />} />
+                <Route path="/testimonials" element={<TestimonialsPage />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
