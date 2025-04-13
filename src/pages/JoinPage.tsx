@@ -84,7 +84,7 @@ const JoinPage = () => {
       const { termsAccepted, ...registrationData } = values;
       
       const result = await saveRegistrationData({
-        ...registrationData,
+        ...registrationData, // These fields are now properly typed
         selectedPlan,
       });
       

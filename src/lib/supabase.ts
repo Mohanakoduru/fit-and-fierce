@@ -67,15 +67,39 @@ export interface RegistrationFormData {
 }
 
 // Function to save registration data to Supabase
-export async function saveRegistrationData(data: Omit<RegistrationFormData, 'createdAt'>) {
+export async function saveRegistrationData(data: {
+  name?: string;
+  email?: string;
+  phone?: string; 
+  address?: string;
+  dob?: string;
+  emergencyContact?: string;
+  healthConditions?: string;
+  paymentMethod?: string;
+  selectedPlan: MembershipPlan;
+}) {
   try {
+    // Verify all required fields are present
+    if (!data.name || !data.email || !data.phone || !data.address || 
+        !data.dob || !data.emergencyContact || !data.paymentMethod) {
+      throw new Error('Missing required fields for registration');
+    }
+
     // Log the data being saved (for debugging)
     console.log('Saving registration data:', data);
     
     const { data: insertedData, error } = await supabase
       .from('registrations')
       .insert([{
-        ...data,
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+        address: data.address,
+        dob: data.dob,
+        emergencyContact: data.emergencyContact,
+        healthConditions: data.healthConditions || '',
+        paymentMethod: data.paymentMethod,
+        selectedPlan: data.selectedPlan,
         createdAt: new Date().toISOString()
       }]);
 
