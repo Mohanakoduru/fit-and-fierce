@@ -25,8 +25,8 @@ const formSchema = z.object({
   emergencyContact: z.string().min(10, { message: "Please enter a valid emergency contact number." }),
   healthConditions: z.string().optional(),
   paymentMethod: z.enum(["credit", "debit", "upi", "netbanking"]),
-  termsAccepted: z.literal(true, {
-    errorMap: () => ({ message: "You must accept the terms and conditions." }),
+  termsAccepted: z.boolean().refine(val => val === true, {
+    message: "You must accept the terms and conditions.",
   }),
 });
 
@@ -462,3 +462,4 @@ const JoinPage = () => {
 };
 
 export default JoinPage;
+
