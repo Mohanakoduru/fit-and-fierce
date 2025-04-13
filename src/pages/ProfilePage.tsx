@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -141,173 +140,173 @@ const ProfilePage = () => {
               </div>
             </div>
             
-            <Tabs defaultValue="profile" value={activeTab} onValueChange={setActiveTab} className="mt-6">
+            <Tabs value={activeTab} onValueChange={setActiveTab} className="mt-6">
               <TabsList className="grid w-full sm:w-auto grid-cols-2 sm:flex sm:space-x-2">
                 <TabsTrigger value="profile">Personal Info</TabsTrigger>
                 <TabsTrigger value="membership">Membership</TabsTrigger>
               </TabsList>
+            
+              <CardContent className="py-4">
+                <TabsContent value="profile">
+                  <Form {...form}>
+                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <FormField
+                          control={form.control}
+                          name="firstName"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>First Name</FormLabel>
+                              <FormControl>
+                                <Input {...field} />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                        <FormField
+                          control={form.control}
+                          name="lastName"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Last Name</FormLabel>
+                              <FormControl>
+                                <Input {...field} />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+
+                      <FormField
+                        control={form.control}
+                        name="phone"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Phone Number</FormLabel>
+                            <FormControl>
+                              <Input {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+
+                      <FormField
+                        control={form.control}
+                        name="address"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Address</FormLabel>
+                            <FormControl>
+                              <Input {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+
+                      <FormField
+                        control={form.control}
+                        name="dob"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Date of Birth</FormLabel>
+                            <FormControl>
+                              <Input type="date" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+
+                      <FormField
+                        control={form.control}
+                        name="emergencyContact"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Emergency Contact</FormLabel>
+                            <FormControl>
+                              <Input {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+
+                      <FormField
+                        control={form.control}
+                        name="healthConditions"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Health Conditions</FormLabel>
+                            <FormControl>
+                              <Textarea 
+                                placeholder="Please list any health conditions or medical information we should be aware of"
+                                className="resize-none"
+                                {...field} 
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+
+                      <Button type="submit" className="w-full btn-primary" disabled={isLoading}>
+                        {isLoading ? (
+                          <>
+                            <span className="animate-spin mr-2">◌</span>
+                            Saving...
+                          </>
+                        ) : (
+                          "Save Changes"
+                        )}
+                      </Button>
+                    </form>
+                  </Form>
+                </TabsContent>
+
+                <TabsContent value="membership">
+                  <div className="space-y-6">
+                    <div className="p-4 border rounded-lg bg-gray-50">
+                      <h3 className="font-semibold text-lg mb-2">Current Membership</h3>
+                      {profile?.membership_plan ? (
+                        <div className="space-y-2">
+                          <p className="flex justify-between">
+                            <span className="text-gray-600">Plan:</span>
+                            <span className="font-medium">{profile.membership_plan}</span>
+                          </p>
+                          <p className="flex justify-between">
+                            <span className="text-gray-600">Status:</span>
+                            <span className="font-medium text-green-600">Active</span>
+                          </p>
+                          <Button className="w-full mt-4" variant="outline">
+                            Change Plan
+                          </Button>
+                        </div>
+                      ) : (
+                        <div className="space-y-4">
+                          <p className="text-gray-600">You don't have an active membership plan.</p>
+                          <Button className="w-full" onClick={() => window.location.href = '/join'}>
+                            Join Now
+                          </Button>
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="p-4 border rounded-lg bg-gray-50">
+                      <h3 className="font-semibold text-lg mb-2">Payment Methods</h3>
+                      <p className="text-gray-600">No payment methods added yet.</p>
+                      <Button className="w-full mt-4" variant="outline">
+                        Add Payment Method
+                      </Button>
+                    </div>
+                  </div>
+                </TabsContent>
+              </CardContent>
             </Tabs>
           </CardHeader>
-
-          <CardContent className="py-4">
-            <TabsContent value="profile">
-              <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <FormField
-                      control={form.control}
-                      name="firstName"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>First Name</FormLabel>
-                          <FormControl>
-                            <Input {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="lastName"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Last Name</FormLabel>
-                          <FormControl>
-                            <Input {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
-
-                  <FormField
-                    control={form.control}
-                    name="phone"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Phone Number</FormLabel>
-                        <FormControl>
-                          <Input {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-
-                  <FormField
-                    control={form.control}
-                    name="address"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Address</FormLabel>
-                        <FormControl>
-                          <Input {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-
-                  <FormField
-                    control={form.control}
-                    name="dob"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Date of Birth</FormLabel>
-                        <FormControl>
-                          <Input type="date" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-
-                  <FormField
-                    control={form.control}
-                    name="emergencyContact"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Emergency Contact</FormLabel>
-                        <FormControl>
-                          <Input {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-
-                  <FormField
-                    control={form.control}
-                    name="healthConditions"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Health Conditions</FormLabel>
-                        <FormControl>
-                          <Textarea 
-                            placeholder="Please list any health conditions or medical information we should be aware of"
-                            className="resize-none"
-                            {...field} 
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-
-                  <Button type="submit" className="w-full btn-primary" disabled={isLoading}>
-                    {isLoading ? (
-                      <>
-                        <span className="animate-spin mr-2">◌</span>
-                        Saving...
-                      </>
-                    ) : (
-                      "Save Changes"
-                    )}
-                  </Button>
-                </form>
-              </Form>
-            </TabsContent>
-
-            <TabsContent value="membership">
-              <div className="space-y-6">
-                <div className="p-4 border rounded-lg bg-gray-50">
-                  <h3 className="font-semibold text-lg mb-2">Current Membership</h3>
-                  {profile?.membership_plan ? (
-                    <div className="space-y-2">
-                      <p className="flex justify-between">
-                        <span className="text-gray-600">Plan:</span>
-                        <span className="font-medium">{profile.membership_plan}</span>
-                      </p>
-                      <p className="flex justify-between">
-                        <span className="text-gray-600">Status:</span>
-                        <span className="font-medium text-green-600">Active</span>
-                      </p>
-                      <Button className="w-full mt-4" variant="outline">
-                        Change Plan
-                      </Button>
-                    </div>
-                  ) : (
-                    <div className="space-y-4">
-                      <p className="text-gray-600">You don't have an active membership plan.</p>
-                      <Button className="w-full" onClick={() => window.location.href = '/join'}>
-                        Join Now
-                      </Button>
-                    </div>
-                  )}
-                </div>
-
-                <div className="p-4 border rounded-lg bg-gray-50">
-                  <h3 className="font-semibold text-lg mb-2">Payment Methods</h3>
-                  <p className="text-gray-600">No payment methods added yet.</p>
-                  <Button className="w-full mt-4" variant="outline">
-                    Add Payment Method
-                  </Button>
-                </div>
-              </div>
-            </TabsContent>
-          </CardContent>
         </Card>
       </div>
     </div>
