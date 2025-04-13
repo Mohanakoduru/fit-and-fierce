@@ -1,7 +1,6 @@
-
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { CreditCard, Check, User, Mail, Phone, Calendar } from 'lucide-react';
 import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
@@ -12,6 +11,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { useToast } from '@/hooks/use-toast';
+import { saveRegistrationData, MembershipPlan } from '@/lib/supabase';
 
 // Define form validation schema
 const formSchema = z.object({
@@ -31,9 +31,11 @@ const formSchema = z.object({
 });
 
 const JoinPage = () => {
-  const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
+  const [selectedPlan, setSelectedPlan] = useState<MembershipPlan | null>(null);
   const [step, setStep] = useState(1); // 1: Plan selection, 2: Registration form, 3: Payment method
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
+  const navigate = useNavigate();
   
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -50,7 +52,7 @@ const JoinPage = () => {
     },
   });
 
-  const handlePlanSelection = (plan: string) => {
+  const handlePlanSelection = (plan: MembershipPlan) => {
     setSelectedPlan(plan);
     setStep(2);
     
@@ -60,20 +62,53 @@ const JoinPage = () => {
     });
   };
 
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
-    // This would normally send data to a backend
-    console.log("Form values:", values);
-    console.log("Selected plan:", selectedPlan);
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    if (!selectedPlan) {
+      toast({
+        title: "Error",
+        description: "Please select a plan before proceeding.",
+        variant: "destructive"
+      });
+      return;
+    }
     
-    toast({
-      title: "Registration Completed",
-      description: "Your membership registration has been submitted. We'll contact you shortly!",
-    });
+    setIsSubmitting(true);
     
-    // Reset form and go back to plan selection
-    setStep(1);
-    setSelectedPlan(null);
-    form.reset();
+    try {
+      // Save registration data to Supabase
+      const result = await saveRegistrationData({
+        ...values,
+        selectedPlan,
+      });
+      
+      if (result.success) {
+        toast({
+          title: "Registration Completed",
+          description: "Your membership registration has been submitted. We'll contact you shortly!",
+        });
+        
+        // Reset form and go back to plan selection
+        setStep(1);
+        setSelectedPlan(null);
+        form.reset();
+        
+        // Redirect to home page after short delay
+        setTimeout(() => {
+          navigate('/');
+        }, 3000);
+      } else {
+        throw new Error("Failed to save registration");
+      }
+    } catch (error) {
+      console.error("Registration error:", error);
+      toast({
+        title: "Registration Failed",
+        description: "There was an error processing your registration. Please try again.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const goBack = () => {
@@ -430,8 +465,10 @@ const JoinPage = () => {
                 />
 
                 <div className="flex justify-between mt-6">
-                  <Button variant="outline" onClick={goBack}>Back</Button>
-                  <Button type="submit">Complete Registration</Button>
+                  <Button variant="outline" onClick={goBack} type="button" disabled={isSubmitting}>Back</Button>
+                  <Button type="submit" disabled={isSubmitting}>
+                    {isSubmitting ? "Processing..." : "Complete Registration"}
+                  </Button>
                 </div>
               </form>
             </Form>
@@ -462,4 +499,3 @@ const JoinPage = () => {
 };
 
 export default JoinPage;
-
