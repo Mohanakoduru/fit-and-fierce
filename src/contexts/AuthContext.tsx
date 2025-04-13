@@ -70,8 +70,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       if (error) throw error;
       
       toast({
-        title: "Account created!",
-        description: "Please check your email to confirm your account."
+        title: "🎉 Congratulations!",
+        description: `Welcome to FIT & FIERCE, ${firstName}! Your account has been created. Please check your email to confirm your registration.`
       });
       
       return { error: null };

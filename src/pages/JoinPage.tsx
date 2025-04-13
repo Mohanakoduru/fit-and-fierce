@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Link, useNavigate } from 'react-router-dom';
@@ -14,7 +13,6 @@ import * as z from 'zod';
 import { useToast } from '@/hooks/use-toast';
 import { saveRegistrationData, MembershipPlan } from '@/lib/supabase';
 
-// Define form validation schema
 const formSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
   email: z.string().email({ message: "Please enter a valid email address." }),
@@ -31,7 +29,6 @@ const formSchema = z.object({
   }),
 });
 
-// Create a type that represents the form data
 type FormValues = z.infer<typeof formSchema>;
 
 const JoinPage = () => {
@@ -61,8 +58,8 @@ const JoinPage = () => {
     setStep(2);
     
     toast({
-      title: "Plan Selected",
-      description: `You've selected the ${plan} plan.`,
+      title: "🎉 Excellent Choice!",
+      description: `You've selected the ${plan} plan. This is a fantastic option that fits your fitness goals!`,
     });
   };
 
@@ -79,27 +76,23 @@ const JoinPage = () => {
     setIsSubmitting(true);
     
     try {
-      // Save registration data to Supabase
-      // We need to exclude termsAccepted as it's not part of our RegistrationFormData type
       const { termsAccepted, ...registrationData } = values;
       
       const result = await saveRegistrationData({
-        ...registrationData, // These fields are now properly typed
+        ...registrationData,
         selectedPlan,
       });
       
       if (result.success) {
         toast({
-          title: "Registration Completed",
-          description: "Your membership registration has been submitted. We'll contact you shortly!",
+          title: "🎉 Congratulations on Your New Fitness Journey!",
+          description: `Welcome to the FIT & FIERCE family! Your ${selectedPlan} membership has been activated. We're excited to help you achieve your fitness goals!`,
         });
         
-        // Reset form and go back to plan selection
         setStep(1);
         setSelectedPlan(null);
         form.reset();
         
-        // Redirect to home page after short delay
         setTimeout(() => {
           navigate('/');
         }, 3000);
@@ -129,7 +122,6 @@ const JoinPage = () => {
       <div className="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-lg">
         <h1 className="text-3xl font-bold mb-6">Join FIT & FIERCE Today</h1>
         
-        {/* Progress steps */}
         <div className="mb-8">
           <div className="flex items-center justify-between">
             <div className={`flex-1 text-center ${step >= 1 ? 'text-fitgreen font-semibold' : ''}`}>
@@ -149,7 +141,6 @@ const JoinPage = () => {
           </div>
         </div>
         
-        {/* Step 1: Plan Selection */}
         {step === 1 && (
           <div>
             <div className="mb-8">
@@ -243,7 +234,6 @@ const JoinPage = () => {
           </div>
         )}
 
-        {/* Step 2: Registration Form */}
         {step === 2 && (
           <div>
             <h2 className="text-xl font-semibold mb-4">Personal Information</h2>
@@ -375,7 +365,6 @@ const JoinPage = () => {
           </div>
         )}
 
-        {/* Step 3: Payment Method */}
         {step === 3 && (
           <div>
             <h2 className="text-xl font-semibold mb-4">Payment Method</h2>
