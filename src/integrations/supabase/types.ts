@@ -48,6 +48,48 @@ export type Database = {
         }
         Relationships: []
       }
+      profiles: {
+        Row: {
+          address: string | null
+          avatar_url: string | null
+          created_at: string
+          dob: string | null
+          emergency_contact: string | null
+          first_name: string | null
+          health_conditions: string | null
+          id: string
+          last_name: string | null
+          membership_plan: string | null
+          phone: string | null
+        }
+        Insert: {
+          address?: string | null
+          avatar_url?: string | null
+          created_at?: string
+          dob?: string | null
+          emergency_contact?: string | null
+          first_name?: string | null
+          health_conditions?: string | null
+          id: string
+          last_name?: string | null
+          membership_plan?: string | null
+          phone?: string | null
+        }
+        Update: {
+          address?: string | null
+          avatar_url?: string | null
+          created_at?: string
+          dob?: string | null
+          emergency_contact?: string | null
+          first_name?: string | null
+          health_conditions?: string | null
+          id?: string
+          last_name?: string | null
+          membership_plan?: string | null
+          phone?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

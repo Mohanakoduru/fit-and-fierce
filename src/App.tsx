@@ -16,6 +16,10 @@ import FreeTrial from "./pages/FreeTrial";
 import ProgramsPage from "./pages/ProgramsPage";
 import TestimonialsPage from "./pages/TestimonialsPage";
 import TrainersPage from "./pages/TrainersPage";
+import { AuthProvider } from "./contexts/AuthContext";
+import AuthPage from "./pages/AuthPage";
+import ProfilePage from "./pages/ProfilePage";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 // Create a client
 const queryClient = new QueryClient();
@@ -24,27 +28,35 @@ const App = () => {
   return (
     <React.StrictMode>
       <QueryClientProvider client={queryClient}>
-        <TooltipProvider>
-          <Toaster />
-          <Sonner />
-          <BrowserRouter>
-            <Layout>
-              <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/about" element={<AboutPage />} />
-                <Route path="/blog" element={<BlogPage />} />
-                <Route path="/contact" element={<ContactPage />} />
-                <Route path="/join" element={<JoinPage />} />
-                <Route path="/free-trial" element={<FreeTrial />} />
-                <Route path="/programs" element={<ProgramsPage />} />
-                <Route path="/testimonials" element={<TestimonialsPage />} />
-                <Route path="/trainers" element={<TrainersPage />} />
-                {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </Layout>
-          </BrowserRouter>
-        </TooltipProvider>
+        <AuthProvider>
+          <TooltipProvider>
+            <Toaster />
+            <Sonner />
+            <BrowserRouter>
+              <Layout>
+                <Routes>
+                  <Route path="/" element={<HomePage />} />
+                  <Route path="/about" element={<AboutPage />} />
+                  <Route path="/blog" element={<BlogPage />} />
+                  <Route path="/contact" element={<ContactPage />} />
+                  <Route path="/join" element={<JoinPage />} />
+                  <Route path="/free-trial" element={<FreeTrial />} />
+                  <Route path="/programs" element={<ProgramsPage />} />
+                  <Route path="/testimonials" element={<TestimonialsPage />} />
+                  <Route path="/trainers" element={<TrainersPage />} />
+                  <Route path="/auth" element={<AuthPage />} />
+                  <Route path="/profile" element={
+                    <ProtectedRoute>
+                      <ProfilePage />
+                    </ProtectedRoute>
+                  } />
+                  {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
+              </Layout>
+            </BrowserRouter>
+          </TooltipProvider>
+        </AuthProvider>
       </QueryClientProvider>
     </React.StrictMode>
   );
