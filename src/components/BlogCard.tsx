@@ -1,7 +1,7 @@
 
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Calendar, User } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
+import { Calendar, User, ArrowRight } from 'lucide-react';
 
 interface BlogCardProps {
   id: string;
@@ -22,9 +22,16 @@ const BlogCard: React.FC<BlogCardProps> = ({
   author,
   category,
 }) => {
+  const navigate = useNavigate();
+  
+  const handleReadMore = (e: React.MouseEvent) => {
+    e.preventDefault();
+    navigate(`/blog?id=${id}`);
+  };
+  
   return (
     <div className="blog-card overflow-hidden bg-white rounded-lg shadow-md hover:shadow-lg transition-all">
-      <Link to={`/blog/${id}`}>
+      <Link to={`/blog?id=${id}`}>
         <div className="relative h-52 overflow-hidden">
           <img
             src={image}
@@ -49,32 +56,19 @@ const BlogCard: React.FC<BlogCardProps> = ({
             <span>{author}</span>
           </div>
         </div>
-        <Link to={`/blog/${id}`}>
+        <Link to={`/blog?id=${id}`}>
           <h3 className="text-xl font-bold mb-2 hover:text-fitgreen transition-colors line-clamp-2">
             {title}
           </h3>
         </Link>
         <p className="text-gray-600 mb-4 line-clamp-3">{excerpt}</p>
-        <Link
-          to={`/blog/${id}`}
+        <button
+          onClick={handleReadMore}
           className="text-fitgreen font-semibold inline-flex items-center hover:text-fitblue transition-colors"
         >
           Read More
-          <svg
-            className="w-4 h-4 ml-1"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M14 5l7 7m0 0l-7 7m7-7H3"
-            ></path>
-          </svg>
-        </Link>
+          <ArrowRight className="w-4 h-4 ml-1" />
+        </button>
       </div>
     </div>
   );
