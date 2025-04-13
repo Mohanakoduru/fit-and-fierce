@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Link, useNavigate } from 'react-router-dom';
@@ -25,10 +26,13 @@ const formSchema = z.object({
   emergencyContact: z.string().min(10, { message: "Please enter a valid emergency contact number." }),
   healthConditions: z.string().optional(),
   paymentMethod: z.enum(["credit", "debit", "upi", "netbanking"]),
-  termsAccepted: z.boolean().refine(val => val === true, {
-    message: "You must accept the terms and conditions.",
+  termsAccepted: z.literal(true, {
+    errorMap: () => ({ message: "You must accept the terms and conditions." }),
   }),
 });
+
+// Create a type that represents the form data
+type FormValues = z.infer<typeof formSchema>;
 
 const JoinPage = () => {
   const [selectedPlan, setSelectedPlan] = useState<MembershipPlan | null>(null);
@@ -37,7 +41,7 @@ const JoinPage = () => {
   const { toast } = useToast();
   const navigate = useNavigate();
   
-  const form = useForm<z.infer<typeof formSchema>>({
+  const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
@@ -48,7 +52,7 @@ const JoinPage = () => {
       emergencyContact: "",
       healthConditions: "",
       paymentMethod: "credit",
-      termsAccepted: false,
+      termsAccepted: false as any, // This is a known issue with z.literal(true) and defaultValues
     },
   });
 
@@ -62,7 +66,7 @@ const JoinPage = () => {
     });
   };
 
-  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+  const onSubmit = async (values: FormValues) => {
     if (!selectedPlan) {
       toast({
         title: "Error",
@@ -76,8 +80,11 @@ const JoinPage = () => {
     
     try {
       // Save registration data to Supabase
+      // We need to exclude termsAccepted as it's not part of our RegistrationFormData type
+      const { termsAccepted, ...registrationData } = values;
+      
       const result = await saveRegistrationData({
-        ...values,
+        ...registrationData,
         selectedPlan,
       });
       
