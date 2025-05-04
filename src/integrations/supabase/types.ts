@@ -54,10 +54,12 @@ export type Database = {
           avatar_url: string | null
           created_at: string
           dob: string | null
+          email: string | null
           emergency_contact: string | null
           first_name: string | null
           health_conditions: string | null
           id: string
+          last_login: string | null
           last_name: string | null
           membership_plan: string | null
           phone: string | null
@@ -67,10 +69,12 @@ export type Database = {
           avatar_url?: string | null
           created_at?: string
           dob?: string | null
+          email?: string | null
           emergency_contact?: string | null
           first_name?: string | null
           health_conditions?: string | null
           id: string
+          last_login?: string | null
           last_name?: string | null
           membership_plan?: string | null
           phone?: string | null
@@ -80,10 +84,12 @@ export type Database = {
           avatar_url?: string | null
           created_at?: string
           dob?: string | null
+          email?: string | null
           emergency_contact?: string | null
           first_name?: string | null
           health_conditions?: string | null
           id?: string
+          last_login?: string | null
           last_name?: string | null
           membership_plan?: string | null
           phone?: string | null

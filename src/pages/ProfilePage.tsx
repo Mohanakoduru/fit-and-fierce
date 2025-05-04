@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -115,6 +116,16 @@ const ProfilePage = () => {
     }
   };
 
+  // Format the last login date
+  const formatLastLogin = (dateString?: string) => {
+    if (!dateString) return "Never logged in";
+    const date = new Date(dateString);
+    return new Intl.DateTimeFormat('en-US', {
+      dateStyle: 'medium',
+      timeStyle: 'short'
+    }).format(date);
+  };
+
   return (
     <div className="container-custom py-16">
       <div className="max-w-4xl mx-auto">
@@ -131,7 +142,12 @@ const ProfilePage = () => {
               </Avatar>
               <div className="text-center sm:text-left">
                 <CardTitle className="text-2xl">{profile?.first_name || ''} {profile?.last_name || ''}</CardTitle>
-                <CardDescription>{user?.email}</CardDescription>
+                <CardDescription>{profile?.email || user?.email}</CardDescription>
+                {profile?.last_login && (
+                  <div className="mt-1 text-xs text-gray-500">
+                    Last login: {formatLastLogin(profile?.last_login)}
+                  </div>
+                )}
                 {profile?.membership_plan && (
                   <div className="mt-2 inline-block px-3 py-1 rounded-full text-sm font-semibold bg-fitgreen text-white">
                     {profile.membership_plan} Membership
